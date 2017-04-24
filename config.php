@@ -5,7 +5,7 @@ date_default_timezone_set('PRC');
 //config.php
 //配置项如果有多个用;隔开
 //账号,多个账号用;隔开
-define('USER', '****@lexinfintech.com;***@lexinfintech.com;');
+define('USER', '****@****.com;***@***.com;');
 //密码
 define('PASSWORD', '****;****;');
 //选择，周一到周五，用,隔开
