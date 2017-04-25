@@ -18,7 +18,7 @@ for($i = 0;$i < $n;$i++){
     $num_c = count($choice_real);
     //随机选择
     if($random[$i] ==1 || $num_c!=5){
-        $arr=range(0,$num_c-1);
+        $arr=rand(0,$num_c-1);
         $c = $choice_real[$arr];
     }else{
         $c = $choice_real[$week-1];
