@@ -6,6 +6,7 @@ $user = explode(";", USER);
 $choice = explode(";", CHOICE);
 $email = explode(";", EMAIL);
 $random = explode(";", RANDOM);
+$hot = explode(";", HOT);
 
 $n=count($user);
 
@@ -28,12 +29,17 @@ for($i = 0;$i < $n;$i++){
     $curl_cookie = new CurlCookie($cookie);
     $tabUniqueId = $curl_cookie->get_tabUniqueId();
 
+    //选择热门
+    if($hot[$i] == 1){
+      $c = $curl_cookie->get_order_id($tabUniqueId);
+    }
+
     $reuslt = $curl_cookie->add_order($c,$tabUniqueId);
 
     if(strstr($reuslt,"SUCCESSFUL")){
         $meican = "订餐成功 ".$c;
     }else{
-        $meican = "订餐失败 ".$reuslt;
+        $meican = "订餐失败 ".$c." ".$reuslt;
     }
     echo $meican;
 

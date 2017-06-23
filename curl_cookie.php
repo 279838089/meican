@@ -88,4 +88,15 @@ class CurlCookie{
               'userAddressUniqueId' => '772a87d56869');
       return $this->post_content($url, $post);
     }
+
+    //自动获取同事常点的餐
+    public function get_order_id($tabUniqueId){
+      $dates = date("Y-m-d");
+      $url = "https://meican.com/preorder/api/v2.1/recommendations/dishes?tabUniqueId=$tabUniqueId&targetTime=$dates+17:00";
+      $get_order = $this->get_content($url);
+      $res = json_decode($get_order,true);
+      $num = count($res['othersRegularDishList']);
+      $arr=rand(0,$num-1);
+      return $res['othersRegularDishList'][$arr]['id'];
+    }
 }
