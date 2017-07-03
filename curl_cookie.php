@@ -62,7 +62,7 @@ class CurlCookie{
       $dates = date("Y-m-d");
       $url = "https://meican.com/preorder/api/v2.1/calendarItems/list?beginDate=$dates&endDate=$dates&withOrderDetail=false";
       $result = json_decode($this->get_content($url));
-      return $result->dateList[0]->calendarItemList[0]->userTab->uniqueId;
+      return $result->dateList[0]->calendarItemList[1]->userTab->uniqueId;
     }
 
     //发送邮件
