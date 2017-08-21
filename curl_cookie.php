@@ -90,13 +90,33 @@ class CurlCookie{
     }
 
     //自动获取同事常点的餐
-    public function get_order_id($tabUniqueId){
+    public function get_order_id($tabUniqueId,$pass){
       $dates = date("Y-m-d");
       $url = "https://meican.com/preorder/api/v2.1/recommendations/dishes?tabUniqueId=$tabUniqueId&targetTime=$dates+17:00";
       $get_order = $this->get_content($url);
       $res = json_decode($get_order,true);
       $num = count($res['othersRegularDishList']);
-      $arr=rand(0,$num-1);
+
+      for($i =0;$i<5;$i++){
+        $arr=rand(0,$num-1);
+        echo $res['othersRegularDishList'][$arr]['name'];
+        if($this->pass_some($res['othersRegularDishList'][$arr]['name'],$pass)){
+          break;
+        }
+      }
       return $res['othersRegularDishList'][$arr]['id'];
+    }
+
+    //过滤
+    public function pass_some($name,$pass){
+      if($pass!=''){
+        $pass = explode(',',$pass);
+        foreach($pass as $v){
+          if(strpos($name, $v) !== false){
+            return 0;
+          }
+        }
+      }
+      return 1;
     }
 }

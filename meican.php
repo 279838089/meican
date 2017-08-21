@@ -7,6 +7,7 @@ $choice = explode(";", CHOICE);
 $email = explode(";", EMAIL);
 $random = explode(";", RANDOM);
 $hot = explode(";", HOT);
+$pass = explode(";", PASS);
 
 $n=count($user);
 
@@ -31,7 +32,7 @@ for($i = 0;$i < $n;$i++){
 
     //选择热门
     if($hot[$i] == 1){
-      $c = $curl_cookie->get_order_id($tabUniqueId);
+      $c = $curl_cookie->get_order_id($tabUniqueId,$pass[$i]);
     }
 
     $reuslt = $curl_cookie->add_order($c,$tabUniqueId);

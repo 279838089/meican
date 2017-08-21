@@ -16,3 +16,5 @@ define('RANDOM', '1;0;');
 define('HOT', '1;1;');
 //邮箱，订餐成功与否都发邮件,为空就不发
 define('EMAIL', '***@qq.com;***@qq.com;');
+//是否过滤某些菜,隔开
+define('PASS', '果,沙拉;');
